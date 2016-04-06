@@ -1,18 +1,23 @@
-# Log.js
+# meep-log
 
-Lightweight logging for [NodeJS](http://nodejs.org). Includes a streaming log reader.
-
+logger for meepshop
 
 ## Installation
 
 ```bash
-$ npm install log
+$ npm install meep-log
 ```
 
 
 ## Example
 
-By default, a Log’s stream is `stdout`, and its log level defaults is `DEBUG`. 
+A Log’s stream is `stdout`, and its log level defaults is `DEBUG`.
+
+View mode Setting with `shell environment variable`
+```javascript
+export LOG_DEPLOY=PROD  //show JSON message 
+export LOG_DEPLOY=DEV   //show a line message, this is default setting.
+```
 
 Instead of `DEBUG`,  let’s create a log with the `info` level:
 
@@ -23,14 +28,6 @@ var Log = require('log')
 log.debug('preparing email');
 log.info('sending email');
 log.error('failed to send email');
-```
-
-Specifying a specific stream:
-
-```javascript
-var fs = require('fs')
- , Log = require('log')
- , log = new Log('debug', fs.createWriteStream('my.log'));
 ```
 
 Instead of the log level constants, you can just supply a string:
@@ -46,38 +43,6 @@ You can use `%s` to pass arguments (much like `console.log()`):
 log.error('oh no, failed to send mail to %s.', user.email);
 ```
 
-
-## Reader
-
-To stream a log, simply pass a readable stream instead of a writable:
-
-```javascript
-var Log    = require('log')
-  , fs     = require('fs')
-  , stream = fs.createReadStream(__dirname + '/file.log')
-  , log    = new Log('debug', stream);
-
-log.on('line', function(line){
-  console.log(line);
-});
-```
-
-(**Note:** `log.js` assumes utf8 encoded data.)
-
-Example output:
-
-```javascript
-{ date: Sun, 26 Sep 2010 01:26:14 GMT
-, level: 1
-, levelString: 'ALERT'
-, msg: 'a alert message'
-}
-{ date: Sun, 26 Sep 2010 01:26:14 GMT
-, level: 0
-, levelString: 'EMERGENCY'
-, msg: 'a emergency message'
-}
-```
     
 ## Log Levels
 
@@ -96,7 +61,7 @@ Example output:
 
 (The MIT License)
 
-Copyright (c) 2009-2010 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
+Copyright (c) 2009-2010 Yan Chen &lt;yan771012@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
