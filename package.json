@@ -1,7 +1,7 @@
 {
   "name": "meep-log",
   "description": "logger for meepShop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Yan Chen <yan771012@gmail.com>",
   "main": "./lib/log.js",
   "engines": {

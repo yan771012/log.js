@@ -13,10 +13,17 @@ $ npm install meep-log
 
 A Log’s stream is `stdout`, and its log level defaults is `DEBUG`.
 
-View mode Setting with `shell environment variable`
+Level & View mode Setting with `shell environment variable`
 ```javascript
+//Level
+export LOG_LEVEL=INFO
+
+//View Mode
 export LOG_DEPLOY=PROD  //show JSON message 
 export LOG_DEPLOY=DEV   //show a line message, this is default setting.
+
+//Show Date
+export LOG_SHOW_DATE=false //disable show date, default enable
 ```
 
 Instead of `DEBUG`,  let’s create a log with the `info` level:
@@ -43,6 +50,16 @@ You can use `%s` to pass arguments (much like `console.log()`):
 log.error('oh no, failed to send mail to %s.', user.email);
 ```
 
+Show message with Javascript Object
+
+```javascript
+var obj = {
+              name: 'Tom',
+              age: 18
+          };
+log.error('Hello,this is Object: %j', obj);   // use '%j'
+log.error(JSON.stringify(obj)); // use JSON.stringify
+```
     
 ## Log Levels
 
